@@ -1,8 +1,11 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'login_model.dart';
 export 'login_model.dart';
@@ -73,10 +76,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
                     Theme.of(context).brightness == Brightness.dark
-                        ? 'assets/images/Novo_projeto_50.png'
-                        : 'assets/images/Novo_projeto_51.png',
-                    width: 238.0,
-                    height: 110.0,
+                        ? 'assets/images/k7eg7_8.png'
+                        : 'assets/images/Clipi8.png',
+                    width: 200.0,
+                    height: 200.0,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -394,8 +397,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          context.goNamed(
+                          GoRouter.of(context).prepareAuthEvent();
+
+                          final user = await authManager.signInWithEmail(
+                            context,
+                            _model.emailTextController.text,
+                            _model.passwordTextController.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          context.goNamedAuth(
                             ChooseProfileWidget.routeName,
+                            context.mounted,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
@@ -441,6 +456,117 @@ class _LoginWidgetState extends State<LoginWidget> {
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(24.0),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            final user =
+                                await authManager.signInWithGoogle(context);
+                            if (user == null) {
+                              return;
+                            }
+                            _model.outputUserRoleAssignment =
+                                await RoleAssignmentsTable().queryRows(
+                              queryFn: (q) => q.eqOrNull(
+                                'profile_id',
+                                currentUserUid,
+                              ),
+                            );
+                            if (_model.outputUserRoleAssignment?.length == 0) {
+                              context.goNamedAuth(
+                                ChooseProfileWidget.routeName,
+                                context.mounted,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            } else {
+                              if (_model.outputUserRoleAssignment?.firstOrNull
+                                      ?.roleId ==
+                                  'b02446df-494c-4ffe-b448-9a586dee4770') {
+                                context.pushNamedAuth(
+                                    HomeWidget.routeName, context.mounted);
+                              } else {
+                                if (_model.outputUserRoleAssignment?.firstOrNull
+                                        ?.roleId ==
+                                    'c273a523-801b-4deb-b0ee-3c23d15b7bab') {
+                                  context.pushNamedAuth(
+                                      HomeProWidget.routeName, context.mounted);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'You are not authorised to use this app',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                  GoRouter.of(context).prepareAuthEvent();
+                                  await authManager.signOut();
+                                  GoRouter.of(context).clearRedirectLocation();
+                                }
+                              }
+                            }
+
+                            safeSetState(() {});
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'czpijr5b' /* Continue with Google */,
+                          ),
+                          icon: FaIcon(
+                            FontAwesomeIcons.google,
+                            size: 15.0,
+                          ),
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 55.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.poppins(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
                         ),
                       ),
                     ],

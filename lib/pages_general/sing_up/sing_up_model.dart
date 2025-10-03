@@ -11,18 +11,21 @@ class SingUpModel extends FlutterFlowModel<SingUpWidget> {
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for Password widget.
-  FocusNode? passwordFocusNode1;
-  TextEditingController? passwordTextController1;
-  String? Function(BuildContext, String?)? passwordTextController1Validator;
-  // State field(s) for Password widget.
-  FocusNode? passwordFocusNode2;
-  TextEditingController? passwordTextController2;
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordTextController;
   late bool passwordVisibility;
-  String? Function(BuildContext, String?)? passwordTextController2Validator;
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // State field(s) for ConfirmPassword widget.
+  FocusNode? confirmPasswordFocusNode;
+  TextEditingController? confirmPasswordTextController;
+  late bool confirmPasswordVisibility;
+  String? Function(BuildContext, String?)?
+      confirmPasswordTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
+    confirmPasswordVisibility = false;
   }
 
   @override
@@ -30,10 +33,10 @@ class SingUpModel extends FlutterFlowModel<SingUpWidget> {
     emailFocusNode?.dispose();
     emailTextController?.dispose();
 
-    passwordFocusNode1?.dispose();
-    passwordTextController1?.dispose();
+    passwordFocusNode?.dispose();
+    passwordTextController?.dispose();
 
-    passwordFocusNode2?.dispose();
-    passwordTextController2?.dispose();
+    confirmPasswordFocusNode?.dispose();
+    confirmPasswordTextController?.dispose();
   }
 }

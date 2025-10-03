@@ -76,3 +76,10 @@ DateTime? return7thDayAgo(DateTime startDate) {
   }
   return returnDate;
 }
+
+int phoneNumberValidationCodeGenerator() {
+  // generate random 4 digit number
+  return 1000 +
+      math.Random().nextInt(
+          9000); // Generates a random 4-digit number between 1000 and 9999
+}

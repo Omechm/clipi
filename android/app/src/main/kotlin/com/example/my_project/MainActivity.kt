@@ -1,4 +1,4 @@
-package com.mycompany.clipi
+package com.clipi
 
 import io.flutter.embedding.android.FlutterActivity
 

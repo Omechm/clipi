@@ -1,10 +1,15 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'code_phone_model.dart';
 export 'code_phone_model.dart';
 
@@ -42,6 +47,8 @@ class _CodePhoneWidgetState extends State<CodePhoneWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -201,16 +208,46 @@ class _CodePhoneWidgetState extends State<CodePhoneWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.goNamed(
-                          ChooseProfileWidget.routeName,
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                            ),
-                          },
+                        _model.outputUserProfile =
+                            await ProfilesTable().queryRows(
+                          queryFn: (q) => q.eqOrNull(
+                            'id',
+                            currentUserUid,
+                          ),
                         );
+                        if (_model.outputUserProfile?.firstOrNull?.code ==
+                            (int.parse(_model.pinCodeController!.text))) {
+                          context.goNamed(
+                            ChooseProfileWidget.routeName,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Wrong code, try again',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).error,
+                            ),
+                          );
+                          safeSetState(() {
+                            _model.pinCodeController?.clear();
+                          });
+                        }
+
+                        safeSetState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'yrd31xl7' /* Confirm */,
@@ -250,36 +287,85 @@ class _CodePhoneWidgetState extends State<CodePhoneWidget> {
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.replay_rounded,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            '086mrzo6' /* Re-send code */,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        _model.outputGeneratedCode =
+                            await actions.phoneValidationCodeGenerator();
+                        await ProfilesTable().update(
+                          data: {
+                            'code': _model.outputGeneratedCode,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            currentUserUid,
                           ),
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
+                        );
+                        if (isiOS) {
+                          await launchUrl(Uri.parse(
+                              "sms:${FFAppState().Phone}&body=${Uri.encodeComponent('Here is your validation code: ${_model.outputGeneratedCode?.toString()}')}"));
+                        } else {
+                          await launchUrl(Uri(
+                            scheme: 'sms',
+                            path: FFAppState().Phone,
+                            queryParameters: <String, String>{
+                              'body':
+                                  'Here is your validation code: ${_model.outputGeneratedCode?.toString()}',
+                            },
+                          ));
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'New code sent',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).accent3,
+                          ),
+                        );
+
+                        safeSetState(() {});
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.replay_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              '086mrzo6' /* Re-send code */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                        ),
-                      ].divide(SizedBox(width: 10.0)),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                          ),
+                        ].divide(SizedBox(width: 10.0)),
+                      ),
                     ),
                   ].divide(SizedBox(height: 20.0)),
                 ),

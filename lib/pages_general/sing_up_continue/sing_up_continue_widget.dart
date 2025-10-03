@@ -1,42 +1,39 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'sing_up_model.dart';
-export 'sing_up_model.dart';
+import 'sing_up_continue_model.dart';
+export 'sing_up_continue_model.dart';
 
-class SingUpWidget extends StatefulWidget {
-  const SingUpWidget({super.key});
+class SingUpContinueWidget extends StatefulWidget {
+  const SingUpContinueWidget({super.key});
 
-  static String routeName = 'SingUp';
-  static String routePath = '/singUp';
+  static String routeName = 'singUpContinue';
+  static String routePath = '/singUpContinue';
 
   @override
-  State<SingUpWidget> createState() => _SingUpWidgetState();
+  State<SingUpContinueWidget> createState() => _SingUpContinueWidgetState();
 }
 
-class _SingUpWidgetState extends State<SingUpWidget> {
-  late SingUpModel _model;
+class _SingUpContinueWidgetState extends State<SingUpContinueWidget> {
+  late SingUpContinueModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SingUpModel());
+    _model = createModel(context, () => SingUpContinueModel());
 
-    _model.emailTextController ??= TextEditingController();
-    _model.emailFocusNode ??= FocusNode();
+    _model.nameTextController ??= TextEditingController();
+    _model.nameFocusNode ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
-    _model.passwordFocusNode ??= FocusNode();
-
-    _model.confirmPasswordTextController ??= TextEditingController();
-    _model.confirmPasswordFocusNode ??= FocusNode();
+    _model.phoneTextController ??= TextEditingController();
+    _model.phoneFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -86,7 +83,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'rzruprst' /* SIGN UP */,
+                  'b990jtlx' /* ALMOST THERE! */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       font: GoogleFonts.poppins(
@@ -112,7 +109,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'naj7yind' /* Email */,
+                          '57xx0a7s' /* Fullname */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
@@ -138,8 +135,8 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                         child: TextFormField(
-                          controller: _model.emailTextController,
-                          focusNode: _model.emailFocusNode,
+                          controller: _model.nameTextController,
+                          focusNode: _model.nameFocusNode,
                           autofocus: false,
                           textInputAction: TextInputAction.done,
                           obscureText: false,
@@ -232,13 +229,13 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                                         .fontStyle,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primary,
-                          validator: _model.emailTextControllerValidator
+                          validator: _model.nameTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
                       Text(
                         FFLocalizations.of(context).getText(
-                          '3pgrwhi7' /* Password */,
+                          'yeywbgnz' /* Phone number */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
@@ -264,11 +261,11 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                         child: TextFormField(
-                          controller: _model.passwordTextController,
-                          focusNode: _model.passwordFocusNode,
+                          controller: _model.phoneTextController,
+                          focusNode: _model.phoneFocusNode,
                           autofocus: false,
                           textInputAction: TextInputAction.done,
-                          obscureText: !_model.passwordVisibility,
+                          obscureText: false,
                           decoration: InputDecoration(
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -338,20 +335,6 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context).fillColor01,
-                            suffixIcon: InkWell(
-                              onTap: () => safeSetState(
-                                () => _model.passwordVisibility =
-                                    !_model.passwordVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color: Color(0xFF747474),
-                                size: 22.0,
-                              ),
-                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -372,178 +355,20 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                                         .fontStyle,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primary,
-                          validator: _model.passwordTextControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'u52xxzq9' /* Confirm Password */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.poppins(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              fontSize: 12.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-                        child: TextFormField(
-                          controller: _model.confirmPasswordTextController,
-                          focusNode: _model.confirmPasswordFocusNode,
-                          autofocus: false,
-                          textInputAction: TextInputAction.done,
-                          obscureText: !_model.confirmPasswordVisibility,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  font: GoogleFonts.poppins(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                            hintStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  font: GoogleFonts.poppins(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).borderColor,
-                                width: 0.7,
-                              ),
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 0.7,
-                              ),
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 0.7,
-                              ),
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 0.7,
-                              ),
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context).fillColor01,
-                            suffixIcon: InkWell(
-                              onTap: () => safeSetState(
-                                () => _model.confirmPasswordVisibility =
-                                    !_model.confirmPasswordVisibility,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.confirmPasswordVisibility
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color: Color(0xFF747474),
-                                size: 22.0,
-                              ),
-                            ),
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                          cursorColor: FlutterFlowTheme.of(context).primary,
-                          validator: _model
-                              .confirmPasswordTextControllerValidator
+                          validator: _model.phoneTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-                          if (_model.passwordTextController.text !=
-                              _model.confirmPasswordTextController.text) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Passwords don\'t match!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
+                          await ProfilesTable().insert({
+                            'full_name': _model.nameTextController.text,
+                            'phone': _model.phoneTextController.text,
+                            'id': currentUserUid,
+                          });
 
-                          final user = await authManager.createAccountWithEmail(
-                            context,
-                            _model.emailTextController.text,
-                            _model.passwordTextController.text,
-                          );
-                          if (user == null) {
-                            return;
-                          }
-
-                          context.goNamedAuth(
-                            SingUpContinueWidget.routeName,
-                            context.mounted,
+                          context.goNamed(
+                            ChooseProfileWidget.routeName,
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
@@ -554,7 +379,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                           );
                         },
                         text: FFLocalizations.of(context).getText(
-                          'n16n1ek8' /* Next */,
+                          'mefq0yus' /* Next */,
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
@@ -622,7 +447,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                         ),
                         Text(
                           FFLocalizations.of(context).getText(
-                            '5vqkwl0m' /* OR */,
+                            'shkrzspz' /* OR */,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -668,7 +493,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                       children: [
                         Text(
                           FFLocalizations.of(context).getText(
-                            'zdtwa48a' /* All ready have an account? */,
+                            'ndbumn41' /* All ready have an account? */,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -710,7 +535,7 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                           },
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              '417f1nfg' /* LOG IN */,
+                              'byzi4t0v' /* LOG IN */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -734,69 +559,6 @@ class _SingUpWidgetState extends State<SingUpWidget> {
                       ].divide(SizedBox(width: 4.0)),
                     ),
                   ].divide(SizedBox(height: 20.0)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    final user = await authManager.signInWithGoogle(context);
-                    if (user == null) {
-                      return;
-                    }
-
-                    context.goNamedAuth(
-                      SingUpContinueWidget.routeName,
-                      context.mounted,
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.fade,
-                          duration: Duration(milliseconds: 0),
-                        ),
-                      },
-                    );
-                  },
-                  text: FFLocalizations.of(context).getText(
-                    'e3swbm88' /* Continue with Google */,
-                  ),
-                  icon: FaIcon(
-                    FontAwesomeIcons.google,
-                    size: 15.0,
-                  ),
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 55.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          font: GoogleFonts.poppins(
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .fontStyle,
-                          ),
-                          color: FlutterFlowTheme.of(context).secondary,
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                        ),
-                    elevation: 3.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
                 ),
               ),
             ],

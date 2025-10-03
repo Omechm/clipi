@@ -254,27 +254,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'pt': '',
     },
-    'mxvof1yo': {
-      'en': 'demouser@gmail.com',
-      'es': 'demouser@gmail.com',
-      'pt': 'demouser@gmail.com',
-    },
-    'con7hr3l': {
-      'en': 'Phone number',
-      'es': 'Número de teléfono',
-      'pt': 'Número de telefone',
-    },
-    'twtk5izs': {
-      'en': '',
-      'es': '',
-      'pt': '',
-    },
-    '0cnp0m7s': {
-      'en': '12345678910',
-      'es': '12345678910',
-      'pt': '12345678910',
-    },
-    'u52xxzq9': {
+    '3pgrwhi7': {
       'en': 'Password',
       'es': 'Contraseña',
       'pt': 'Senha',
@@ -284,13 +264,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'pt': '',
     },
-    'jn5vqdr8': {
-      'en': '123456',
-      'es': '123456',
-      'pt': '123456',
+    'u52xxzq9': {
+      'en': 'Confirm Password',
+      'es': 'Contraseña',
+      'pt': 'Senha',
+    },
+    'j8w3g3h8': {
+      'en': '',
+      'es': '',
+      'pt': '',
     },
     'n16n1ek8': {
-      'en': 'Create One',
+      'en': 'Next',
       'es': 'Crea uno',
       'pt': 'Crie um',
     },
@@ -308,6 +293,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'LOG IN',
       'es': 'ACCESO',
       'pt': 'CONECTE-SE',
+    },
+    'e3swbm88': {
+      'en': 'Continue with Google',
+      'es': 'Acceso',
+      'pt': 'Conecte-se',
     },
     'cify26jd': {
       'en': 'Home',
@@ -1878,6 +1868,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Acceso',
       'pt': 'Conecte-se',
     },
+    'czpijr5b': {
+      'en': 'Continue with Google',
+      'es': 'Acceso',
+      'pt': 'Conecte-se',
+    },
     'v6p9dwg1': {
       'en': 'Forgot password?',
       'es': '¿Has olvidado tu contraseña?',
@@ -2157,6 +2152,59 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'From \$40',
       'es': '',
       'pt': '',
+    },
+  },
+  // singUpContinue
+  {
+    'b990jtlx': {
+      'en': 'ALMOST THERE!',
+      'es': 'INSCRIBIRSE',
+      'pt': 'INSCREVER-SE',
+    },
+    '57xx0a7s': {
+      'en': 'Fullname',
+      'es': 'Correo electrónico',
+      'pt': 'E-mail',
+    },
+    'al50ixhf': {
+      'en': '',
+      'es': '',
+      'pt': '',
+    },
+    'yeywbgnz': {
+      'en': 'Phone number',
+      'es': 'Número de teléfono',
+      'pt': 'Número de telefone',
+    },
+    'ygijylas': {
+      'en': '',
+      'es': '',
+      'pt': '',
+    },
+    'mefq0yus': {
+      'en': 'Next',
+      'es': 'Crea uno',
+      'pt': 'Crie um',
+    },
+    'shkrzspz': {
+      'en': 'OR',
+      'es': 'O',
+      'pt': 'OU',
+    },
+    'ndbumn41': {
+      'en': 'All ready have an account?',
+      'es': '¿Todo listo tienes una cuenta?',
+      'pt': 'Tudo pronto, tem uma conta?',
+    },
+    'byzi4t0v': {
+      'en': 'LOG IN',
+      'es': 'ACCESO',
+      'pt': 'CONECTE-SE',
+    },
+    'mi7hucqg': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'pt': 'Lar',
     },
   },
   // Templates

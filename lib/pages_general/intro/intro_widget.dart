@@ -113,9 +113,9 @@ class _IntroWidgetState extends State<IntroWidget>
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.asset(
                         Theme.of(context).brightness == Brightness.dark
-                            ? 'assets/images/Novo_projeto_51.png'
-                            : 'assets/images/Novo_projeto_50.png',
-                        width: 300.0,
+                            ? 'assets/images/k7eg7_8.png'
+                            : 'assets/images/Clipi8.png',
+                        width: 200.0,
                         height: 200.0,
                         fit: BoxFit.cover,
                       ),

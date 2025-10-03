@@ -47,3 +47,5 @@ export '/account_professional/rate_app_client_pro/rate_app_client_pro_widget.dar
     show RateAppClientProWidget;
 export '/new_pages/research_map_prof/research_map_prof_widget.dart'
     show ResearchMapProfWidget;
+export '/pages_general/sing_up_continue/sing_up_continue_widget.dart'
+    show SingUpContinueWidget;

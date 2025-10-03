@@ -234,8 +234,12 @@ dynamic deserializeParam<T>(
             return ShopsWithBarbersRow(data);
           case AppointmentsRow:
             return AppointmentsRow(data);
+          case RoleAssignmentsRow:
+            return RoleAssignmentsRow(data);
           case BarberProfilesRow:
             return BarberProfilesRow(data);
+          case RolesRow:
+            return RolesRow(data);
           case AppointmentsWithDetailsRow:
             return AppointmentsWithDetailsRow(data);
           case ReviewsRow:

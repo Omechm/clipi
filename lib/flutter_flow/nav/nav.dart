@@ -231,6 +231,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ResearchMapProfWidget.routeName,
           path: ResearchMapProfWidget.routePath,
           builder: (context, params) => ResearchMapProfWidget(),
+        ),
+        FFRoute(
+          name: SingUpContinueWidget.routeName,
+          path: SingUpContinueWidget.routePath,
+          builder: (context, params) => SingUpContinueWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

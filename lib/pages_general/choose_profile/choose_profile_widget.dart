@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -118,10 +120,17 @@ class _ChooseProfileWidgetState extends State<ChooseProfileWidget> {
               children: [
                 FFButtonWidget(
                   onPressed: () async {
-                    FFAppState().ProfileBarber = true;
+                    _model.outputInsertUserRoleBarber =
+                        await RoleAssignmentsTable().insert({
+                      'profile_id': currentUserUid,
+                      'role_id': 'c273a523-801b-4deb-b0ee-3c23d15b7bab',
+                    });
+                    FFAppState().ProfileBarber =
+                        _model.outputInsertUserRoleBarber?.roleId ==
+                            'c273a523-801b-4deb-b0ee-3c23d15b7bab';
                     safeSetState(() {});
 
-                    context.pushNamed(
+                    context.goNamed(
                       HomeProWidget.routeName,
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
@@ -131,6 +140,8 @@ class _ChooseProfileWidgetState extends State<ChooseProfileWidget> {
                         ),
                       },
                     );
+
+                    safeSetState(() {});
                   },
                   text: FFLocalizations.of(context).getText(
                     'ibubgj5e' /* BARBER */,
@@ -171,10 +182,17 @@ class _ChooseProfileWidgetState extends State<ChooseProfileWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    FFAppState().ProfileBarber = false;
-                    FFAppState().update(() {});
+                    _model.outputInsertUserRoleClient =
+                        await RoleAssignmentsTable().insert({
+                      'profile_id': currentUserUid,
+                      'role_id': 'b02446df-494c-4ffe-b448-9a586dee4770',
+                    });
+                    FFAppState().ProfileBarber =
+                        _model.outputInsertUserRoleClient?.roleId ==
+                            'c273a523-801b-4deb-b0ee-3c23d15b7bab';
+                    safeSetState(() {});
 
-                    context.pushNamed(
+                    context.goNamed(
                       HomeWidget.routeName,
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
@@ -184,6 +202,8 @@ class _ChooseProfileWidgetState extends State<ChooseProfileWidget> {
                         ),
                       },
                     );
+
+                    safeSetState(() {});
                   },
                   text: FFLocalizations.of(context).getText(
                     'g6bs9p8l' /* CLIENT */,

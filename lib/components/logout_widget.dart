@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -107,16 +108,12 @@ class _LogoutWidgetState extends State<LogoutWidget>
                         padding: EdgeInsets.all(16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.goNamed(
-                              LoginWidget.routeName,
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.goNamedAuth(
+                                IntroWidget.routeName, context.mounted);
                           },
                           text: FFLocalizations.of(context).getText(
                             'ow6usdfq' /* Agree */,

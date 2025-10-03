@@ -33,6 +33,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _ReserveCollection;
     });
+    _safeInit(() {
+      _Phone = prefs.getString('ff_Phone') ?? _Phone;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -141,6 +144,13 @@ class FFAppState extends ChangeNotifier {
   int get rateApp => _rateApp;
   set rateApp(int value) {
     _rateApp = value;
+  }
+
+  String _Phone = '';
+  String get Phone => _Phone;
+  set Phone(String value) {
+    _Phone = value;
+    prefs.setString('ff_Phone', value);
   }
 }
 

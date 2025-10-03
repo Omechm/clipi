@@ -23,12 +23,12 @@ class ProfilesRow extends SupabaseDataRow {
   String? get phone => getField<String>('phone');
   set phone(String? value) => setField<String>('phone', value);
 
-  String get role => getField<String>('role')!;
-  set role(String value) => setField<String>('role', value);
-
   String? get avatarUrl => getField<String>('avatar_url');
   set avatarUrl(String? value) => setField<String>('avatar_url', value);
 
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
+
+  int? get code => getField<int>('code');
+  set code(int? value) => setField<int>('code', value);
 }
