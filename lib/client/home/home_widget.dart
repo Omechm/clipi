@@ -1,13 +1,15 @@
+import '/backend/supabase/supabase.dart';
 import '/components/side_bar_client_widget.dart';
 import '/components_app/barbers/barbers_widget.dart';
 import '/components_app/services/services_widget.dart';
 import '/components_app/templates/templates_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:badges/badges.dart' as badges;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_model.dart';
 export 'home_model.dart';
@@ -119,8 +121,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                             child: Image.asset(
                               Theme.of(context).brightness == Brightness.dark
                                   ? 'assets/images/Novo_projeto_50.png'
-                                  : 'assets/images/Novo_projeto_51.png',
-                              width: 208.0,
+                                  : 'assets/images/Black150.png',
+                              width: 150.0,
                               height: 77.0,
                               fit: BoxFit.cover,
                             ),
@@ -197,22 +199,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed(ResearchMapProfWidget.routeName);
-                        },
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(14.0),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1519500528352-2d1460418d41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8YmFyYmVyfGVufDB8fHx8MTcwMjY2NzY4OHww&ixlib=rb-4.0.3&q=80&w=1080',
-                            width: 300.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(14.0),
+                        child: Image.network(
+                          'https://images.unsplash.com/photo-1519500528352-2d1460418d41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8YmFyYmVyfGVufDB8fHx8MTcwMjY2NzY4OHww&ixlib=rb-4.0.3&q=80&w=1080',
+                          width: 300.0,
+                          height: 200.0,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       ClipRRect(
@@ -433,43 +426,48 @@ class _HomeWidgetState extends State<HomeWidget> {
                 alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 25.0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        wrapWithModel(
-                          model: _model.barbersModel1,
-                          updateCallback: () => safeSetState(() {}),
-                          child: BarbersWidget(
-                            barber: 'Adam',
-                          ),
-                        ),
-                        wrapWithModel(
-                          model: _model.barbersModel2,
-                          updateCallback: () => safeSetState(() {}),
-                          child: BarbersWidget(
-                            barber: 'Sid',
-                          ),
-                        ),
-                        wrapWithModel(
-                          model: _model.barbersModel3,
-                          updateCallback: () => safeSetState(() {}),
-                          child: BarbersWidget(
-                            barber: 'Parker',
-                          ),
-                        ),
-                        wrapWithModel(
-                          model: _model.barbersModel4,
-                          updateCallback: () => safeSetState(() {}),
-                          child: BarbersWidget(
-                            barber: 'Arthur M.',
-                          ),
-                        ),
-                      ]
-                          .divide(SizedBox(width: 12.0))
-                          .around(SizedBox(width: 12.0)),
+                  child: FutureBuilder<List<BarbersWithServicesRow>>(
+                    future: BarbersWithServicesTable().queryRows(
+                      queryFn: (q) => q,
                     ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 30.0,
+                            height: 30.0,
+                            child: SpinKitPulse(
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 30.0,
+                            ),
+                          ),
+                        );
+                      }
+                      List<BarbersWithServicesRow>
+                          rowBarbersWithServicesRowList = snapshot.data!;
+
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(
+                              rowBarbersWithServicesRowList.length, (rowIndex) {
+                            final rowBarbersWithServicesRow =
+                                rowBarbersWithServicesRowList[rowIndex];
+                            return BarbersWidget(
+                              key: Key(
+                                  'Keycgw_${rowIndex}_of_${rowBarbersWithServicesRowList.length}'),
+                              barber: functions.getFirstNameFromFullname(
+                                  rowBarbersWithServicesRow.barberName)!,
+                              pic: rowBarbersWithServicesRow.barberPic,
+                              barberId: rowBarbersWithServicesRow.barberId!,
+                            );
+                          }).divide(SizedBox(width: 12.0)).around(
+                              SizedBox(width: 12.0)),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

@@ -1,13 +1,19 @@
-import '/components/hair_cut_widget.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/logout_widget.dart';
 import '/components/name_prof_widget.dart';
+import '/components_app/add_services/add_services_widget.dart';
+import '/components_app/services_serv/services_serv_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'my_settings_model.dart';
 export 'my_settings_model.dart';
 
@@ -33,6 +39,16 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => MySettingsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.outputBarberServices = await ServicesTable().queryRows(
+        queryFn: (q) => q,
+      );
+      _model.pageServices =
+          _model.outputBarberServices!.toList().cast<ServicesRow>();
+      safeSetState(() {});
+    });
 
     animationsMap.addAll({
       'rowOnPageLoadAnimation1': AnimationInfo(
@@ -193,6 +209,8 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -202,7 +220,7 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -214,6 +232,7 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                       EdgeInsetsDirectional.fromSTEB(8.0, 48.0, 16.0, 16.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
                         splashColor: Colors.transparent,
@@ -236,6 +255,27 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                           Icons.keyboard_backspace,
                           color: FlutterFlowTheme.of(context).primary,
                           size: 34.0,
+                        ),
+                      ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(SetAvatarWidget.routeName);
+                        },
+                        child: Container(
+                          width: 30.0,
+                          height: 30.0,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Image.network(
+                            'https://picsum.photos/seed/847/600',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ],
@@ -312,18 +352,28 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                   ).animateOnPageLoad(
                       animationsMap['rowOnPageLoadAnimation2']!),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          '2gz1758s' /* Company Data */,
-                        ),
-                        style:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  font: GoogleFonts.poppins(
+                if (false)
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            '2gz1758s' /* Company Data */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .fontWeight,
@@ -331,25 +381,18 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                      ),
-                    ],
-                  ).animateOnPageLoad(
-                      animationsMap['rowOnPageLoadAnimation3']!),
-                ),
+                        ),
+                      ],
+                    ).animateOnPageLoad(
+                        animationsMap['rowOnPageLoadAnimation3']!),
+                  ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      FFLocalizations.of(context).getText(
-                        'w2c7rf83' /* Barber MM */,
+                      valueOrDefault<String>(
+                        FFAppState().userProfile.firstOrNull?.fullName,
+                        'Name',
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
@@ -378,8 +421,9 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        FFLocalizations.of(context).getText(
-                          '1aoooc14' /* +1 (555) 123-4567 */,
+                        valueOrDefault<String>(
+                          FFAppState().userProfile.firstOrNull?.phone,
+                          'Phone',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.poppins(
@@ -430,45 +474,106 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                     ),
                   ],
                 ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation6']!),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: wrapWithModel(
-                          model: _model.hairCutModel1,
-                          updateCallback: () => safeSetState(() {}),
-                          child: HairCutWidget(
-                            hairCut: 'Goatee',
+                Stack(
+                  alignment: AlignmentDirectional(1.0, 0.0),
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                      child: Builder(
+                        builder: (context) {
+                          final barberServicesChildren =
+                              _model.pageServices.toList();
+
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children:
+                                  List.generate(barberServicesChildren.length,
+                                      (barberServicesChildrenIndex) {
+                                final barberServicesChildrenItem =
+                                    barberServicesChildren[
+                                        barberServicesChildrenIndex];
+                                return wrapWithModel(
+                                  model: _model.servicesServModels.getModel(
+                                    barberServicesChildrenItem.id,
+                                    barberServicesChildrenIndex,
+                                  ),
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: ServicesServWidget(
+                                    key: Key(
+                                      'Keyuu3_${barberServicesChildrenItem.id}',
+                                    ),
+                                    services: barberServicesChildrenItem.name,
+                                    cash: barberServicesChildrenItem.priceCents
+                                        .toString(),
+                                    time: barberServicesChildrenItem
+                                        .durationMinutes
+                                        .toString(),
+                                  ),
+                                );
+                              }).divide(SizedBox(width: 8.0)),
+                            ),
+                          ).animateOnPageLoad(
+                              animationsMap['rowOnPageLoadAnimation7']!);
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                      child: Container(
+                        width: 60.0,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          shape: BoxShape.circle,
+                        ),
+                        child: FlutterFlowIconButton(
+                          borderRadius: 60.0,
+                          buttonSize: 60.0,
+                          fillColor: FlutterFlowTheme.of(context).primary,
+                          icon: Icon(
+                            Icons.add,
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            size: 24.0,
                           ),
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Color(0x00FFFFFF),
+                              useSafeArea: true,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(context).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: AddServicesWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          },
                         ),
                       ),
-                      wrapWithModel(
-                        model: _model.hairCutModel2,
-                        updateCallback: () => safeSetState(() {}),
-                        child: HairCutWidget(
-                          hairCut: 'Circle Beard',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.hairCutModel3,
-                        updateCallback: () => safeSetState(() {}),
-                        child: HairCutWidget(
-                          hairCut: 'Fade Cut',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.hairCutModel4,
-                        updateCallback: () => safeSetState(() {}),
-                        child: HairCutWidget(
-                          hairCut: 'Fade Cut',
-                        ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
-                  ),
-                ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation7']!),
+                    ),
+                  ],
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
                   child: Row(
@@ -515,14 +620,24 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                   ).animateOnPageLoad(
                       animationsMap['rowOnPageLoadAnimation8']!),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      's74ykc3j' /* Professionals */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.poppins(
+                if (false)
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        's74ykc3j' /* Professionals */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.poppins(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
                             fontWeight: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontWeight,
@@ -530,72 +645,79 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .fontWeight,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
-                  ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation']!),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      wrapWithModel(
-                        model: _model.nameProfModel1,
-                        updateCallback: () => safeSetState(() {}),
-                        child: NameProfWidget(
-                          name: 'Adam',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.nameProfModel2,
-                        updateCallback: () => safeSetState(() {}),
-                        child: NameProfWidget(
-                          name: 'William Raw',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.nameProfModel3,
-                        updateCallback: () => safeSetState(() {}),
-                        child: NameProfWidget(
-                          name: 'Christofer Mars',
-                        ),
-                      ),
-                    ],
+                    ).animateOnPageLoad(
+                        animationsMap['textOnPageLoadAnimation']!),
                   ),
-                ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation9']!),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scaleX: 3.6,
-                        scaleY: 0.9,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 0.0, 0.0),
-                          child: Icon(
-                            Icons.arrow_right_alt_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
+                if (false)
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        wrapWithModel(
+                          model: _model.nameProfModel1,
+                          updateCallback: () => safeSetState(() {}),
+                          child: NameProfWidget(
+                            name: 'Adam',
                           ),
                         ),
-                      ),
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'jgmaps9c' /* Swipe to see more */,
+                        wrapWithModel(
+                          model: _model.nameProfModel2,
+                          updateCallback: () => safeSetState(() {}),
+                          child: NameProfWidget(
+                            name: 'William Raw',
+                          ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              font: GoogleFonts.poppins(
+                        wrapWithModel(
+                          model: _model.nameProfModel3,
+                          updateCallback: () => safeSetState(() {}),
+                          child: NameProfWidget(
+                            name: 'Christofer Mars',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ).animateOnPageLoad(
+                      animationsMap['rowOnPageLoadAnimation9']!),
+                if (false)
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Transform.scale(
+                          scaleX: 3.6,
+                          scaleY: 0.9,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 0.0, 0.0),
+                            child: Icon(
+                              Icons.arrow_right_alt_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'jgmaps9c' /* Swipe to see more */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodySmall
+                              .override(
+                                font: GoogleFonts.poppins(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontStyle,
+                                ),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                letterSpacing: 0.0,
                                 fontWeight: FlutterFlowTheme.of(context)
                                     .bodySmall
                                     .fontWeight,
@@ -603,20 +725,11 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                                     .bodySmall
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .fontStyle,
-                            ),
-                      ),
-                    ],
-                  ).animateOnPageLoad(
-                      animationsMap['rowOnPageLoadAnimation10']!),
-                ),
+                        ),
+                      ],
+                    ).animateOnPageLoad(
+                        animationsMap['rowOnPageLoadAnimation10']!),
+                  ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 34.0, 8.0, 16.0),
                   child: Row(
@@ -629,8 +742,9 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            FFLocalizations.of(context).getText(
-                              'a4l3tqz2' /* Robert Davis */,
+                            valueOrDefault<String>(
+                              FFAppState().userProfile.firstOrNull?.fullName,
+                              'Name',
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -653,9 +767,7 @@ class _MySettingsWidgetState extends State<MySettingsWidget>
                                 ),
                           ),
                           Text(
-                            FFLocalizations.of(context).getText(
-                              '8fepbklj' /* robertdavis@cutmail.com */,
-                            ),
+                            currentUserEmail,
                             style:
                                 FlutterFlowTheme.of(context).bodySmall.override(
                                       font: GoogleFonts.poppins(

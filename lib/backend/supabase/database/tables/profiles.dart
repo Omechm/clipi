@@ -31,4 +31,7 @@ class ProfilesRow extends SupabaseDataRow {
 
   int? get code => getField<int>('code');
   set code(int? value) => setField<int>('code', value);
+
+  String? get currency => getField<String>('currency');
+  set currency(String? value) => setField<String>('currency', value);
 }

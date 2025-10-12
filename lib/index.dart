@@ -49,3 +49,12 @@ export '/new_pages/research_map_prof/research_map_prof_widget.dart'
     show ResearchMapProfWidget;
 export '/pages_general/sing_up_continue/sing_up_continue_widget.dart'
     show SingUpContinueWidget;
+export '/account_professional/home_pro_copy/home_pro_copy_widget.dart'
+    show HomeProCopyWidget;
+export '/pages_general/checking_user_role/checking_user_role_widget.dart'
+    show CheckingUserRoleWidget;
+export '/account_professional/barber_services/barber_services_widget.dart'
+    show BarberServicesWidget;
+export '/set_avatar/set_avatar_widget.dart' show SetAvatarWidget;
+export '/client/home_copy/home_copy_widget.dart' show HomeCopyWidget;
+export '/homepagecli/homepagecli_widget.dart' show HomepagecliWidget;

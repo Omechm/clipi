@@ -79,13 +79,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomeWidget() : IntroWidget(),
+          appStateNotifier.loggedIn ? CheckingUserRoleWidget() : IntroWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomeWidget() : IntroWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? CheckingUserRoleWidget()
+              : IntroWidget(),
         ),
         FFRoute(
           name: IntroWidget.routeName,
@@ -200,7 +201,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ScheduleHaircutWidget.routeName,
           path: ScheduleHaircutWidget.routePath,
-          builder: (context, params) => ScheduleHaircutWidget(),
+          builder: (context, params) => ScheduleHaircutWidget(
+            barberId: params.getParam(
+              'barberId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: ChooseProfileWidget.routeName,
@@ -236,6 +242,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SingUpContinueWidget.routeName,
           path: SingUpContinueWidget.routePath,
           builder: (context, params) => SingUpContinueWidget(),
+        ),
+        FFRoute(
+          name: HomeProCopyWidget.routeName,
+          path: HomeProCopyWidget.routePath,
+          builder: (context, params) => HomeProCopyWidget(),
+        ),
+        FFRoute(
+          name: CheckingUserRoleWidget.routeName,
+          path: CheckingUserRoleWidget.routePath,
+          builder: (context, params) => CheckingUserRoleWidget(),
+        ),
+        FFRoute(
+          name: BarberServicesWidget.routeName,
+          path: BarberServicesWidget.routePath,
+          builder: (context, params) => BarberServicesWidget(),
+        ),
+        FFRoute(
+          name: SetAvatarWidget.routeName,
+          path: SetAvatarWidget.routePath,
+          builder: (context, params) => SetAvatarWidget(),
+        ),
+        FFRoute(
+          name: HomeCopyWidget.routeName,
+          path: HomeCopyWidget.routePath,
+          builder: (context, params) => HomeCopyWidget(),
+        ),
+        FFRoute(
+          name: HomepagecliWidget.routeName,
+          path: HomepagecliWidget.routePath,
+          builder: (context, params) => HomepagecliWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -426,7 +462,8 @@ class FFRoute {
                       color: FlutterFlowTheme.of(context).primary,
                       child: Center(
                         child: Image.asset(
-                          'assets/images/Novo_projeto_Edited.png',
+                          'assets/images/Black150.png',
+                          width: 200.0,
                           height: 200.0,
                           fit: BoxFit.cover,
                         ),

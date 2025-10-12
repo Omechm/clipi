@@ -125,6 +125,10 @@ class _ChooseProfileWidgetState extends State<ChooseProfileWidget> {
                       'profile_id': currentUserUid,
                       'role_id': 'c273a523-801b-4deb-b0ee-3c23d15b7bab',
                     });
+                    _model.outputInserBarberProfile =
+                        await BarberProfilesTable().insert({
+                      'user_id': currentUserUid,
+                    });
                     FFAppState().ProfileBarber =
                         _model.outputInsertUserRoleBarber?.roleId ==
                             'c273a523-801b-4deb-b0ee-3c23d15b7bab';

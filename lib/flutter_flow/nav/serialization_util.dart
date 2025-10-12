@@ -244,6 +244,8 @@ dynamic deserializeParam<T>(
             return AppointmentsWithDetailsRow(data);
           case ReviewsRow:
             return ReviewsRow(data);
+          case ServiceTemplatesRow:
+            return ServiceTemplatesRow(data);
           case ActiveLocationsRow:
             return ActiveLocationsRow(data);
           default:

@@ -18,8 +18,8 @@ class BarberProfilesRow extends SupabaseDataRow {
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
 
-  String? get userId => getField<String>('user_id');
-  set userId(String? value) => setField<String>('user_id', value);
+  String get userId => getField<String>('user_id')!;
+  set userId(String value) => setField<String>('user_id', value);
 
   String? get bio => getField<String>('bio');
   set bio(String? value) => setField<String>('bio', value);
@@ -32,4 +32,13 @@ class BarberProfilesRow extends SupabaseDataRow {
 
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
+
+  String? get pic => getField<String>('pic');
+  set pic(String? value) => setField<String>('pic', value);
+
+  String? get avatarPath => getField<String>('avatar_path');
+  set avatarPath(String? value) => setField<String>('avatar_path', value);
+
+  String? get avatarBucket => getField<String>('avatar_bucket');
+  set avatarBucket(String? value) => setField<String>('avatar_bucket', value);
 }

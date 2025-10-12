@@ -82,33 +82,37 @@ class _ServicesServWidgetState extends State<ServicesServWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     size: 24.0,
                   ),
-                  Theme(
-                    data: ThemeData(
-                      checkboxTheme: CheckboxThemeData(
-                        visualDensity: VisualDensity.compact,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4.0),
+                  Opacity(
+                    opacity: 0.0,
+                    child: Theme(
+                      data: ThemeData(
+                        checkboxTheme: CheckboxThemeData(
+                          visualDensity: VisualDensity.compact,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
                         ),
+                        unselectedWidgetColor:
+                            FlutterFlowTheme.of(context).uncheckedColor,
                       ),
-                      unselectedWidgetColor:
-                          FlutterFlowTheme.of(context).uncheckedColor,
-                    ),
-                    child: Checkbox(
-                      value: _model.checkboxValue ??= false,
-                      onChanged: (newValue) async {
-                        safeSetState(() => _model.checkboxValue = newValue!);
-                      },
-                      side: (FlutterFlowTheme.of(context).uncheckedColor !=
-                              null)
-                          ? BorderSide(
-                              width: 2,
-                              color:
-                                  FlutterFlowTheme.of(context).uncheckedColor,
-                            )
-                          : null,
-                      activeColor: FlutterFlowTheme.of(context).checkedColor,
-                      checkColor: FlutterFlowTheme.of(context).checkColor,
+                      child: Checkbox(
+                        value: _model.checkboxValue ??= false,
+                        onChanged: (newValue) async {
+                          safeSetState(() => _model.checkboxValue = newValue!);
+                        },
+                        side: (FlutterFlowTheme.of(context).uncheckedColor !=
+                                null)
+                            ? BorderSide(
+                                width: 2,
+                                color: FlutterFlowTheme.of(context)
+                                    .uncheckedColor,
+                              )
+                            : null,
+                        activeColor: FlutterFlowTheme.of(context).checkedColor,
+                        checkColor: FlutterFlowTheme.of(context).checkColor,
+                      ),
                     ),
                   ),
                 ],

@@ -131,6 +131,7 @@ class _ListClientsWidgetState extends State<ListClientsWidget>
           ),
         ),
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [

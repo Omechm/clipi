@@ -1,4 +1,4 @@
-import '/components_app/edit_service/edit_service_widget.dart';
+import '/components_app/edit_service_box/edit_service_box_widget.dart';
 import '/components_app/quick_reminder/quick_reminder_widget.dart';
 import '/components_app/send/send_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -309,7 +309,7 @@ class _BookingCancelWidgetState extends State<BookingCancelWidget>
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: EditServiceWidget(),
+                                              child: EditServiceBoxWidget(),
                                             ),
                                           );
                                         },

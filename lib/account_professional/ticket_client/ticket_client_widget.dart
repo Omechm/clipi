@@ -3,7 +3,7 @@ import '/components_app/edit_button/edit_button_widget.dart';
 import '/components_app/edit_client02/edit_client02_widget.dart';
 import '/components_app/edit_date/edit_date_widget.dart';
 import '/components_app/edit_product/edit_product_widget.dart';
-import '/components_app/edit_service/edit_service_widget.dart';
+import '/components_app/edit_service_box/edit_service_box_widget.dart';
 import '/components_app/edit_total/edit_total_widget.dart';
 import '/components_app/products/products_widget.dart';
 import '/components_app/quick_reminder/quick_reminder_widget.dart';
@@ -263,6 +263,7 @@ class _TicketClientWidgetState extends State<TicketClientWidget>
         body: Container(
           decoration: BoxDecoration(),
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -613,7 +614,7 @@ class _TicketClientWidgetState extends State<TicketClientWidget>
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: EditServiceWidget(),
+                                  child: EditServiceBoxWidget(),
                                 ),
                               );
                             },
@@ -668,7 +669,7 @@ class _TicketClientWidgetState extends State<TicketClientWidget>
                                 },
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: EditServiceWidget(),
+                                  child: EditServiceBoxWidget(),
                                 ),
                               );
                             },

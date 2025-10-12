@@ -10,6 +10,8 @@ class ChooseProfileModel extends FlutterFlowModel<ChooseProfileWidget> {
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   RoleAssignmentsRow? outputInsertUserRoleBarber;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
+  BarberProfilesRow? outputInserBarberProfile;
+  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   RoleAssignmentsRow? outputInsertUserRoleClient;
 
   @override

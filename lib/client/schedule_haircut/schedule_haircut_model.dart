@@ -1,3 +1,5 @@
+import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/components_app/comment/comment_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -9,8 +11,25 @@ class ScheduleHaircutModel extends FlutterFlowModel<ScheduleHaircutWidget> {
 
   String? hour = '0';
 
+  List<ClientServiceBookCollectionDTStruct> pageClientServiceBook = [];
+  void addToPageClientServiceBook(ClientServiceBookCollectionDTStruct item) =>
+      pageClientServiceBook.add(item);
+  void removeFromPageClientServiceBook(
+          ClientServiceBookCollectionDTStruct item) =>
+      pageClientServiceBook.remove(item);
+  void removeAtIndexFromPageClientServiceBook(int index) =>
+      pageClientServiceBook.removeAt(index);
+  void insertAtIndexInPageClientServiceBook(
+          int index, ClientServiceBookCollectionDTStruct item) =>
+      pageClientServiceBook.insert(index, item);
+  void updatePageClientServiceBookAtIndex(
+          int index, Function(ClientServiceBookCollectionDTStruct) updateFn) =>
+      pageClientServiceBook[index] = updateFn(pageClientServiceBook[index]);
+
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - Query Rows] action in ScheduleHaircut widget.
+  List<BarbersWithServicesRow>? outputBarberProfile;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -19,13 +38,7 @@ class ScheduleHaircutModel extends FlutterFlowModel<ScheduleHaircutWidget> {
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // State field(s) for Switch widget.
-  bool? switchValue1;
-  // State field(s) for Switch widget.
-  bool? switchValue2;
-  // State field(s) for Switch widget.
-  bool? switchValue3;
-  // State field(s) for Switch widget.
-  bool? switchValue4;
+  bool? switchValue;
   // Model for comment component.
   late CommentModel commentModel1;
   // Model for comment component.

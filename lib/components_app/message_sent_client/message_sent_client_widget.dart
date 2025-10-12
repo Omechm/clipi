@@ -62,7 +62,7 @@ class _MessageSentClientWidgetState extends State<MessageSentClientWidget> {
               children: [
                 Text(
                   FFLocalizations.of(context).getText(
-                    '0rxf9ev2' /* Mensagem Sent */,
+                    '0rxf9ev2' /* Message Sent */,
                   ),
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         font: GoogleFonts.poppins(

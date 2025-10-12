@@ -78,6 +78,7 @@ class _EditClient02WidgetState extends State<EditClient02Widget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
           child: SingleChildScrollView(
+            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

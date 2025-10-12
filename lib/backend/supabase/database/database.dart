@@ -19,4 +19,5 @@ export 'tables/barber_profiles.dart';
 export 'tables/roles.dart';
 export 'tables/appointments_with_details.dart';
 export 'tables/reviews.dart';
+export 'tables/service_templates.dart';
 export 'tables/active_locations.dart';

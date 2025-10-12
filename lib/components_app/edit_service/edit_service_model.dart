@@ -1,29 +1,59 @@
-import '/components_app/services_serv/services_serv_widget.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'edit_service_widget.dart' show EditServiceWidget;
 import 'package:flutter/material.dart';
 
 class EditServiceModel extends FlutterFlowModel<EditServiceWidget> {
+  ///  Local state fields for this component.
+
+  List<ServiceTemplatesRow> servicedropdown = [];
+  void addToServicedropdown(ServiceTemplatesRow item) =>
+      servicedropdown.add(item);
+  void removeFromServicedropdown(ServiceTemplatesRow item) =>
+      servicedropdown.remove(item);
+  void removeAtIndexFromServicedropdown(int index) =>
+      servicedropdown.removeAt(index);
+  void insertAtIndexInServicedropdown(int index, ServiceTemplatesRow item) =>
+      servicedropdown.insert(index, item);
+  void updateServicedropdownAtIndex(
+          int index, Function(ServiceTemplatesRow) updateFn) =>
+      servicedropdown[index] = updateFn(servicedropdown[index]);
+
+  String? id;
+
   ///  State fields for stateful widgets in this component.
 
-  // Model for servicesServ component.
-  late ServicesServModel servicesServModel1;
-  // Model for servicesServ component.
-  late ServicesServModel servicesServModel2;
-  // Model for servicesServ component.
-  late ServicesServModel servicesServModel3;
+  // Stores action output result for [Backend Call - Query Rows] action in EditService widget.
+  List<ServiceTemplatesRow>? serviceTypes;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
 
   @override
-  void initState(BuildContext context) {
-    servicesServModel1 = createModel(context, () => ServicesServModel());
-    servicesServModel2 = createModel(context, () => ServicesServModel());
-    servicesServModel3 = createModel(context, () => ServicesServModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    servicesServModel1.dispose();
-    servicesServModel2.dispose();
-    servicesServModel3.dispose();
+    textFieldFocusNode1?.dispose();
+    textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
+    textController3?.dispose();
   }
 }

@@ -1,0 +1,61 @@
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
+import 'add_services_widget.dart' show AddServicesWidget;
+import 'package:flutter/material.dart';
+
+class AddServicesModel extends FlutterFlowModel<AddServicesWidget> {
+  ///  Local state fields for this component.
+
+  int? price = 0;
+
+  int? duration = 0;
+
+  List<ServiceTemplatesRow> servicedropdown = [];
+  void addToServicedropdown(ServiceTemplatesRow item) =>
+      servicedropdown.add(item);
+  void removeFromServicedropdown(ServiceTemplatesRow item) =>
+      servicedropdown.remove(item);
+  void removeAtIndexFromServicedropdown(int index) =>
+      servicedropdown.removeAt(index);
+  void insertAtIndexInServicedropdown(int index, ServiceTemplatesRow item) =>
+      servicedropdown.insert(index, item);
+  void updateServicedropdownAtIndex(
+          int index, Function(ServiceTemplatesRow) updateFn) =>
+      servicedropdown[index] = updateFn(servicedropdown[index]);
+
+  ///  State fields for stateful widgets in this component.
+
+  // Stores action output result for [Backend Call - Query Rows] action in AddServices widget.
+  List<ServiceTemplatesRow>? serviceTypes;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode3;
+  TextEditingController? textController3;
+  String? Function(BuildContext, String?)? textController3Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    textFieldFocusNode1?.dispose();
+    textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController2?.dispose();
+
+    textFieldFocusNode3?.dispose();
+    textController3?.dispose();
+  }
+}

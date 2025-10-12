@@ -36,9 +36,20 @@ class BarbersWithServicesRow extends SupabaseDataRow {
   String? get serviceName => getField<String>('service_name');
   set serviceName(String? value) => setField<String>('service_name', value);
 
-  int? get servicePrice => getField<int>('service_price');
-  set servicePrice(int? value) => setField<int>('service_price', value);
+  int? get servicePriceCents => getField<int>('service_price_cents');
+  set servicePriceCents(int? value) =>
+      setField<int>('service_price_cents', value);
 
-  int? get serviceDuration => getField<int>('service_duration');
-  set serviceDuration(int? value) => setField<int>('service_duration', value);
+  int? get serviceDurationMinutes => getField<int>('service_duration_minutes');
+  set serviceDurationMinutes(int? value) =>
+      setField<int>('service_duration_minutes', value);
+
+  String? get barberPic => getField<String>('barber_pic');
+  set barberPic(String? value) => setField<String>('barber_pic', value);
+
+  String? get picBucket => getField<String>('pic_bucket');
+  set picBucket(String? value) => setField<String>('pic_bucket', value);
+
+  String? get picPath => getField<String>('pic_path');
+  set picPath(String? value) => setField<String>('pic_path', value);
 }

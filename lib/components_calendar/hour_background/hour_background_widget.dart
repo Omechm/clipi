@@ -82,16 +82,28 @@ class _HourBackgroundWidgetState extends State<HourBackgroundWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SelectionArea(
-                              child: Text(
-                            valueOrDefault<String>(
-                              widget.time,
-                              '00:00',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.poppins(
+                          Expanded(
+                            child: SelectionArea(
+                                child: Text(
+                              valueOrDefault<String>(
+                                widget.time,
+                                '00:00',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .fontWeight,
@@ -99,18 +111,8 @@ class _HourBackgroundWidgetState extends State<HourBackgroundWidget> {
                                         .headlineSmall
                                         .fontStyle,
                                   ),
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          )),
+                            )),
+                          ),
                         ],
                       ),
                     ),

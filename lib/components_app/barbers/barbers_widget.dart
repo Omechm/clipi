@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'barbers_model.dart';
@@ -10,9 +11,13 @@ class BarbersWidget extends StatefulWidget {
   const BarbersWidget({
     super.key,
     required this.barber,
+    this.pic,
+    required this.barberId,
   });
 
   final String? barber;
+  final String? pic;
+  final String? barberId;
 
   @override
   State<BarbersWidget> createState() => _BarbersWidgetState();
@@ -55,6 +60,12 @@ class _BarbersWidgetState extends State<BarbersWidget> {
           onTap: () async {
             context.pushNamed(
               ScheduleHaircutWidget.routeName,
+              queryParameters: {
+                'barberId': serializeParam(
+                  '',
+                  ParamType.String,
+                ),
+              }.withoutNulls,
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
@@ -71,9 +82,9 @@ class _BarbersWidgetState extends State<BarbersWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.network(
-                  'https://images.unsplash.com/photo-1593717761902-ac814190dc8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8YmFyYmV8ZW58MHx8fHwxNzAyNzAzNDE4fDA&ixlib=rb-4.0.3&q=80&w=1080',
-                ).image,
+                image: CachedNetworkImageProvider(
+                  widget.pic!,
+                ),
               ),
               borderRadius: BorderRadius.circular(14.0),
             ),

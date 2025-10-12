@@ -1,5 +1,6 @@
-import '/components/hair_cut_widget.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/name_prof_widget.dart';
+import '/components_app/services_serv/services_serv_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'my_settings_widget.dart' show MySettingsWidget;
@@ -10,16 +11,21 @@ class MySettingsModel extends FlutterFlowModel<MySettingsWidget> {
 
   bool? floatingOn = false;
 
+  List<ServicesRow> pageServices = [];
+  void addToPageServices(ServicesRow item) => pageServices.add(item);
+  void removeFromPageServices(ServicesRow item) => pageServices.remove(item);
+  void removeAtIndexFromPageServices(int index) => pageServices.removeAt(index);
+  void insertAtIndexInPageServices(int index, ServicesRow item) =>
+      pageServices.insert(index, item);
+  void updatePageServicesAtIndex(int index, Function(ServicesRow) updateFn) =>
+      pageServices[index] = updateFn(pageServices[index]);
+
   ///  State fields for stateful widgets in this page.
 
-  // Model for hairCut component.
-  late HairCutModel hairCutModel1;
-  // Model for hairCut component.
-  late HairCutModel hairCutModel2;
-  // Model for hairCut component.
-  late HairCutModel hairCutModel3;
-  // Model for hairCut component.
-  late HairCutModel hairCutModel4;
+  // Stores action output result for [Backend Call - Query Rows] action in MySettings widget.
+  List<ServicesRow>? outputBarberServices;
+  // Models for servicesServ dynamic component.
+  late FlutterFlowDynamicModels<ServicesServModel> servicesServModels;
   // Model for nameProf component.
   late NameProfModel nameProfModel1;
   // Model for nameProf component.
@@ -29,10 +35,7 @@ class MySettingsModel extends FlutterFlowModel<MySettingsWidget> {
 
   @override
   void initState(BuildContext context) {
-    hairCutModel1 = createModel(context, () => HairCutModel());
-    hairCutModel2 = createModel(context, () => HairCutModel());
-    hairCutModel3 = createModel(context, () => HairCutModel());
-    hairCutModel4 = createModel(context, () => HairCutModel());
+    servicesServModels = FlutterFlowDynamicModels(() => ServicesServModel());
     nameProfModel1 = createModel(context, () => NameProfModel());
     nameProfModel2 = createModel(context, () => NameProfModel());
     nameProfModel3 = createModel(context, () => NameProfModel());
@@ -40,10 +43,7 @@ class MySettingsModel extends FlutterFlowModel<MySettingsWidget> {
 
   @override
   void dispose() {
-    hairCutModel1.dispose();
-    hairCutModel2.dispose();
-    hairCutModel3.dispose();
-    hairCutModel4.dispose();
+    servicesServModels.dispose();
     nameProfModel1.dispose();
     nameProfModel2.dispose();
     nameProfModel3.dispose();

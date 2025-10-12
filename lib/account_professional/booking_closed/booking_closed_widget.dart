@@ -1099,7 +1099,7 @@ class _BookingClosedWidgetState extends State<BookingClosedWidget>
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
-                                                isOverButton: true,
+                                                isOverButton: false,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
                                               ),
@@ -1231,7 +1231,7 @@ class _BookingClosedWidgetState extends State<BookingClosedWidget>
                                                     .fromSTEB(
                                                         16.0, 4.0, 16.0, 4.0),
                                                 hidesUnderline: true,
-                                                isOverButton: true,
+                                                isOverButton: false,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
                                               ),

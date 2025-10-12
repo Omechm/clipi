@@ -59,6 +59,12 @@ class _CardRateProfWidgetState extends State<CardRateProfWidget> {
         onTap: () async {
           context.pushNamed(
             ScheduleHaircutWidget.routeName,
+            queryParameters: {
+              'barberId': serializeParam(
+                '',
+                ParamType.String,
+              ),
+            }.withoutNulls,
             extra: <String, dynamic>{
               kTransitionInfoKey: TransitionInfo(
                 hasTransition: true,

@@ -1,12 +1,15 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
@@ -57,6 +60,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -66,6 +71,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -78,8 +84,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     Theme.of(context).brightness == Brightness.dark
                         ? 'assets/images/k7eg7_8.png'
                         : 'assets/images/Clipi8.png',
-                    width: 200.0,
-                    height: 200.0,
+                    width: 150.0,
+                    height: 150.0,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -408,17 +414,86 @@ class _LoginWidgetState extends State<LoginWidget> {
                             return;
                           }
 
-                          context.goNamedAuth(
-                            ChooseProfileWidget.routeName,
-                            context.mounted,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.fade,
-                                duration: Duration(milliseconds: 0),
-                              ),
-                            },
+                          _model.outputIsBarber = await actions.isBarber();
+                          FFAppState().ProfileBarber = _model.outputIsBarber!;
+                          safeSetState(() {});
+                          _model.outputUserRoleAssignmentEmailLogin =
+                              await RoleAssignmentsTable().queryRows(
+                            queryFn: (q) => q.eqOrNull(
+                              'profile_id',
+                              currentUserUid,
+                            ),
                           );
+                          _model.outputUserProfile =
+                              await ProfilesTable().queryRows(
+                            queryFn: (q) => q.eqOrNull(
+                              'id',
+                              currentUserUid,
+                            ),
+                          );
+                          FFAppState().userProfile = [];
+                          safeSetState(() {});
+                          FFAppState().addToUserProfile(UserProfileDTStruct(
+                            id: _model.outputUserProfile?.firstOrNull?.id,
+                            fullName:
+                                _model.outputUserProfile?.firstOrNull?.fullName,
+                            phone: _model.outputUserProfile?.firstOrNull?.phone,
+                            avatarUrl: _model
+                                .outputUserProfile?.firstOrNull?.avatarUrl,
+                            createdAt: _model
+                                .outputUserProfile?.firstOrNull?.createdAt
+                                ?.toString(),
+                            code: _model.outputUserProfile?.firstOrNull?.code
+                                ?.toString(),
+                          ));
+                          safeSetState(() {});
+                          if (FFAppState().ProfileBarber) {
+                            context.pushNamedAuth(
+                                HomeProWidget.routeName, context.mounted);
+                          } else {
+                            if (_model.outputUserRoleAssignmentEmailLogin
+                                    ?.length ==
+                                0) {
+                              context.goNamedAuth(
+                                ChooseProfileWidget.routeName,
+                                context.mounted,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            } else {
+                              if (_model.outputUserRoleAssignmentEmailLogin
+                                      ?.firstOrNull?.roleId ==
+                                  'b02446df-494c-4ffe-b448-9a586dee4770') {
+                                context.pushNamedAuth(
+                                    HomeWidget.routeName, context.mounted);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'You are not authorised to use this app',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+                              }
+                            }
+                          }
+
+                          safeSetState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
                           '785w3dz1' /* Login */,

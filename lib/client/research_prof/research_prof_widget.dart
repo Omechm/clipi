@@ -96,6 +96,7 @@ class _ResearchProfWidgetState extends State<ResearchProfWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,6 +137,7 @@ class _ResearchProfWidgetState extends State<ResearchProfWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(16.0, 32.0, 16.0, 0.0),
                       child: SingleChildScrollView(
+                        primary: false,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,

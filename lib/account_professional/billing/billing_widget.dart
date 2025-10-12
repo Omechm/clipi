@@ -50,6 +50,7 @@ class _BillingWidgetState extends State<BillingWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SingleChildScrollView(
+          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,7 +276,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'a6w8anm2' /* $ 25.00 */,
+                        'a6w8anm2' /* ₦ 25.00 */,
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
@@ -328,7 +329,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                           ),
                           TextSpan(
                             text: FFLocalizations.of(context).getText(
-                              'uqghq7om' /* $ 50,00 */,
+                              'uqghq7om' /* ₦ 50,00 */,
                             ),
                             style: TextStyle(),
                           )
@@ -910,7 +911,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'xiim8ppx' /* $ 25 */,
+                                    'xiim8ppx' /* ₦ 25 */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .headlineLarge
@@ -1094,7 +1095,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                         updateCallback: () => safeSetState(() {}),
                         child: PaymentsWidget(
                           paymentForms: 'Debit',
-                          value: '\$ 100',
+                          value: '₦ 100',
                           navegation: () async {
                             context.pushNamed(
                               ClientPaymentsWidget.routeName,
@@ -1120,7 +1121,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                         updateCallback: () => safeSetState(() {}),
                         child: PaymentsWidget(
                           paymentForms: 'Credit',
-                          value: '\$ 150',
+                          value: '₦ 150',
                           navegation: () async {
                             context.pushNamed(
                               ClientPaymentsWidget.routeName,
@@ -1146,7 +1147,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                         updateCallback: () => safeSetState(() {}),
                         child: PaymentsWidget(
                           paymentForms: 'Cash',
-                          value: '\$ 200',
+                          value: '₦ 200',
                           navegation: () async {
                             context.pushNamed(
                               ClientPaymentsWidget.routeName,
@@ -1172,7 +1173,7 @@ class _BillingWidgetState extends State<BillingWidget> {
                         updateCallback: () => safeSetState(() {}),
                         child: PaymentsWidget(
                           paymentForms: 'Unpaid',
-                          value: '\$ 20',
+                          value: '₦ 20',
                           navegation: () async {
                             context.pushNamed(
                               ClientPaymentsWidget.routeName,

@@ -1,9 +1,7 @@
 import '/components/side_bar_client_widget.dart';
-import '/components_app/barbers/barbers_widget.dart';
 import '/components_app/services/services_widget.dart';
 import '/components_app/templates/templates_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
 import 'home_widget.dart' show HomeWidget;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -35,14 +33,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late TemplatesModel templatesModel3;
   // Model for Templates component.
   late TemplatesModel templatesModel4;
-  // Model for Barbers component.
-  late BarbersModel barbersModel1;
-  // Model for Barbers component.
-  late BarbersModel barbersModel2;
-  // Model for Barbers component.
-  late BarbersModel barbersModel3;
-  // Model for Barbers component.
-  late BarbersModel barbersModel4;
   // Model for SideBarClient component.
   late SideBarClientModel sideBarClientModel;
 
@@ -58,10 +48,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     templatesModel2 = createModel(context, () => TemplatesModel());
     templatesModel3 = createModel(context, () => TemplatesModel());
     templatesModel4 = createModel(context, () => TemplatesModel());
-    barbersModel1 = createModel(context, () => BarbersModel());
-    barbersModel2 = createModel(context, () => BarbersModel());
-    barbersModel3 = createModel(context, () => BarbersModel());
-    barbersModel4 = createModel(context, () => BarbersModel());
     sideBarClientModel = createModel(context, () => SideBarClientModel());
   }
 
@@ -77,10 +63,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     templatesModel2.dispose();
     templatesModel3.dispose();
     templatesModel4.dispose();
-    barbersModel1.dispose();
-    barbersModel2.dispose();
-    barbersModel3.dispose();
-    barbersModel4.dispose();
     sideBarClientModel.dispose();
   }
 }

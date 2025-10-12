@@ -412,11 +412,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Hola,',
       'pt': 'Olá,',
     },
-    'vhh5rfst': {
-      'en': 'Robert Davis',
-      'es': 'Robert Davis',
-      'pt': 'Roberto Davis',
-    },
     'll23cbjt': {
       'en': 'You are in your schedule',
       'es': 'estas en tu agenda',
@@ -446,6 +441,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '6',
       'es': '6',
       'pt': '6',
+    },
+    'xr2sprhb': {
+      'en': 'Select timeline start hour',
+      'es': '',
+      'pt': '',
+    },
+    'ietup84b': {
+      'en': '7',
+      'es': '',
+      'pt': '',
+    },
+    'ahpflxmg': {
+      'en': 'Start hour',
+      'es': '',
+      'pt': '',
+    },
+    'mk8yb35f': {
+      'en': 'Search...',
+      'es': '',
+      'pt': '',
+    },
+    '6iqbfil1': {
+      'en': '6:00 AM',
+      'es': '',
+      'pt': '',
+    },
+    'w25nxhf7': {
+      'en': '7:00 AM',
+      'es': '',
+      'pt': '',
+    },
+    'meb4do86': {
+      'en': '8:00 AM',
+      'es': '',
+      'pt': '',
     },
     'a0zu8rb1': {
       'en': 'Home',
@@ -734,7 +764,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Saldo de Serviços',
     },
     'a6w8anm2': {
-      'en': '\$ 25.00',
+      'en': '₦ 25.00',
       'es': '\$25.00',
       'pt': 'US\$ 25,00',
     },
@@ -754,7 +784,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'salário bruto:',
     },
     'uqghq7om': {
-      'en': '\$ 50,00',
+      'en': '₦ 50,00',
       'es': '\$50,00',
       'pt': '\$ 50,00',
     },
@@ -774,7 +804,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Deslize para ver mais',
     },
     'xiim8ppx': {
-      'en': '\$ 25',
+      'en': '₦ 25',
       'es': '\$25',
       'pt': 'US\$ 25',
     },
@@ -866,16 +896,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Datos de la compañia',
       'pt': 'Dados da empresa',
     },
-    'w2c7rf83': {
-      'en': 'Barber MM',
-      'es': 'peluquero mm',
-      'pt': 'Barbeiro MM',
-    },
-    '1aoooc14': {
-      'en': '+1 (555) 123-4567',
-      'es': '+1 (555) 123-4567',
-      'pt': '+1 (555) 123-4567',
-    },
     '0ku9o1x3': {
       'en': 'SERVICES',
       'es': 'SERVICIOS',
@@ -895,16 +915,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Swipe to see more',
       'es': 'Desliza para ver más',
       'pt': 'Deslize para ver mais',
-    },
-    'a4l3tqz2': {
-      'en': 'Robert Davis',
-      'es': 'Robert Davis',
-      'pt': 'Roberto Davis',
-    },
-    '8fepbklj': {
-      'en': 'robertdavis@cutmail.com',
-      'es': 'robertdavis@cutmail.com',
-      'pt': 'robertdavis@cutmail.com',
     },
     '0f0v6jib': {
       'en': 'Logout',
@@ -1669,18 +1679,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ScheduleHaircut
   {
-    '5tvtxj05': {
-      'en': 'Josef Jordan',
-      'es': 'Josef Jordán',
-      'pt': 'José Jordão',
-    },
     'aj1648xr': {
       'en': 'Barber',
       'es': 'Barbero',
       'pt': 'barbeiro',
     },
     'k4dcyd1c': {
-      'en': 'Registration',
+      'en': 'Booking',
       'es': 'Registro',
       'pt': 'Cadastro',
     },
@@ -1748,26 +1753,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '21:00',
       'es': '21:00',
       'pt': '21:00',
-    },
-    'uzc5leyd': {
-      'en': 'Cut -  40',
-      'es': 'Corte - 40',
-      'pt': 'Corte - 40',
-    },
-    '9c52j2vy': {
-      'en': 'Beard  -  30',
-      'es': 'Barba - 30',
-      'pt': 'Barba - 30',
-    },
-    'c07r1uxb': {
-      'en': 'Cut and Beard -  35',
-      'es': 'Corte y Barba - 35',
-      'pt': 'Corte e Barba - 35',
-    },
-    'm5butejc': {
-      'en': 'Dye hair-  30',
-      'es': 'Teñir el cabello- 30',
-      'pt': 'Tingir cabelo - 30',
     },
     'qoir9i1k': {
       'en': 'FINISH',
@@ -2205,6 +2190,424 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'es': 'Hogar',
       'pt': 'Lar',
+    },
+  },
+  // HomeProCopy
+  {
+    'wy8ub0fd': {
+      'en': 'Hello, ',
+      'es': 'Hola,',
+      'pt': 'Olá,',
+    },
+    'r1ppaxtf': {
+      'en': 'You are in your schedule',
+      'es': 'estas en tu agenda',
+      'pt': 'Você está na sua agenda',
+    },
+    'doen9wnq': {
+      'en': ' - ',
+      'es': '-',
+      'pt': '-',
+    },
+    'bx70msa4': {
+      'en': 'Today',
+      'es': 'Hoy',
+      'pt': 'Hoje',
+    },
+    'qamop5n9': {
+      'en': '8',
+      'es': '8',
+      'pt': '8',
+    },
+    'r0qvapsd': {
+      'en': 'This Week',
+      'es': 'Esta semana',
+      'pt': 'Essa semana',
+    },
+    'ptk654gc': {
+      'en': '6',
+      'es': '6',
+      'pt': '6',
+    },
+    '9s0ex3yl': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'pt': 'Lar',
+    },
+  },
+  // checkingUserRole
+  {
+    'r4a3k1l2': {
+      'en': 'Home',
+      'es': '',
+      'pt': '',
+    },
+  },
+  // BarberServices
+  {
+    'h7xhsx91': {
+      'en': 'Barber Services',
+      'es': '',
+      'pt': '',
+    },
+    'it6g46pz': {
+      'en': 'Beard Trim & Shape',
+      'es': '',
+      'pt': '',
+    },
+    'qgd9sose': {
+      'en': 'Professional beard trimming and shaping',
+      'es': '',
+      'pt': '',
+    },
+    'z4uznsd3': {
+      'en': '30 minutes',
+      'es': '',
+      'pt': '',
+    },
+    '3rzwafkn': {
+      'en': '\$18',
+      'es': '',
+      'pt': '',
+    },
+    'bsbq2qmd': {
+      'en': 'Book',
+      'es': '',
+      'pt': '',
+    },
+    's7tluu5u': {
+      'en': 'Hot Towel Shave',
+      'es': '',
+      'pt': '',
+    },
+    'db10whl7': {
+      'en': 'Luxurious straight razor shave with hot towel',
+      'es': '',
+      'pt': '',
+    },
+    'p7p1gkcg': {
+      'en': '60 minutes',
+      'es': '',
+      'pt': '',
+    },
+    'z775fxv7': {
+      'en': '\$35',
+      'es': '',
+      'pt': '',
+    },
+    '4we19py9': {
+      'en': 'Book',
+      'es': '',
+      'pt': '',
+    },
+    'cr2wm9xl': {
+      'en': 'Hair Wash & Style',
+      'es': '',
+      'pt': '',
+    },
+    'pod6buph': {
+      'en': 'Deep cleansing wash with premium styling',
+      'es': '',
+      'pt': '',
+    },
+    'wbee9nrl': {
+      'en': '40 minutes',
+      'es': '',
+      'pt': '',
+    },
+    'b3pzh1nd': {
+      'en': '\$22',
+      'es': '',
+      'pt': '',
+    },
+    '0gwhelwa': {
+      'en': 'Book',
+      'es': '',
+      'pt': '',
+    },
+    '0jun5t5x': {
+      'en': 'Mustache Trim',
+      'es': '',
+      'pt': '',
+    },
+    'bhultnu8': {
+      'en': 'Precision mustache trimming and styling',
+      'es': '',
+      'pt': '',
+    },
+    '06hsbzff': {
+      'en': '20 minutes',
+      'es': '',
+      'pt': '',
+    },
+    'afvivlic': {
+      'en': '\$12',
+      'es': '',
+      'pt': '',
+    },
+    'tkgprcez': {
+      'en': 'Book',
+      'es': '',
+      'pt': '',
+    },
+    'rj6s87zv': {
+      'en': 'Premium Package',
+      'es': '',
+      'pt': '',
+    },
+    'xdwf8e4h': {
+      'en': 'POPULAR',
+      'es': '',
+      'pt': '',
+    },
+    'io9yv8ak': {
+      'en': 'Haircut + Beard trim + Hot towel treatment',
+      'es': '',
+      'pt': '',
+    },
+    '7jjhh5pp': {
+      'en': '90 minutes',
+      'es': '',
+      'pt': '',
+    },
+    'ywjp1eib': {
+      'en': 'Was \$55',
+      'es': '',
+      'pt': '',
+    },
+    '81flyhrb': {
+      'en': '\$45',
+      'es': '',
+      'pt': '',
+    },
+    'r4t5tzxo': {
+      'en': 'Book',
+      'es': '',
+      'pt': '',
+    },
+  },
+  // SetAvatar
+  {
+    'einfxepw': {
+      'en': 'Complete Your Profile',
+      'es': '',
+      'pt': '',
+    },
+    'f4wox8tx': {
+      'en': 'Add a profile picture to help others recognize you',
+      'es': '',
+      'pt': '',
+    },
+    'wniyjrxu': {
+      'en': 'Take Photo',
+      'es': '',
+      'pt': '',
+    },
+    'dcnq9k7e': {
+      'en': 'Continue',
+      'es': '',
+      'pt': '',
+    },
+  },
+  // HomeCopy
+  {
+    'ev0aot3x': {
+      'en': '5',
+      'es': '5',
+      'pt': '5',
+    },
+    'xka3domb': {
+      'en': 'Featured Services',
+      'es': 'Nuestras carteras',
+      'pt': 'Nossos portfólios',
+    },
+    'pidrc802': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'pt': 'Lar',
+    },
+  },
+  // homepagecli
+  {
+    'd65m17s4': {
+      'en': 'Find Your Perfect',
+      'es': '',
+      'pt': '',
+    },
+    '9k7j8rwl': {
+      'en': 'Barber',
+      'es': '',
+      'pt': '',
+    },
+    'qi97095o': {
+      'en': 'Book premium haircuts & grooming services',
+      'es': '',
+      'pt': '',
+    },
+    '5cbae8b4': {
+      'en': 'Search barbers near you...',
+      'es': '',
+      'pt': '',
+    },
+    'a453yvof': {
+      'en': 'Popular Services',
+      'es': '',
+      'pt': '',
+    },
+    'fxv9jdho': {
+      'en': 'View All',
+      'es': '',
+      'pt': '',
+    },
+    'qk4lyjka': {
+      'en': 'Haircut',
+      'es': '',
+      'pt': '',
+    },
+    'b1sl8vee': {
+      'en': 'From \$25',
+      'es': '',
+      'pt': '',
+    },
+    'kl5ckyug': {
+      'en': 'Beard Trim',
+      'es': '',
+      'pt': '',
+    },
+    '71e62wkv': {
+      'en': 'From \$15',
+      'es': '',
+      'pt': '',
+    },
+    'kfh64ydo': {
+      'en': 'Hot Towel',
+      'es': '',
+      'pt': '',
+    },
+    'k8ewlczo': {
+      'en': 'From \$10',
+      'es': '',
+      'pt': '',
+    },
+    'vkoqzdqj': {
+      'en': 'Full Service',
+      'es': '',
+      'pt': '',
+    },
+    'ebfhgyu8': {
+      'en': 'From \$45',
+      'es': '',
+      'pt': '',
+    },
+    'gbkyh7r0': {
+      'en': 'Top Rated Barbers',
+      'es': '',
+      'pt': '',
+    },
+    'qtslnhxe': {
+      'en': 'See All',
+      'es': '',
+      'pt': '',
+    },
+    'meaf7bg0': {
+      'en': 'Marcus Johnson',
+      'es': '',
+      'pt': '',
+    },
+    'qvrq2imj': {
+      'en': 'Elite Cuts Barbershop',
+      'es': '',
+      'pt': '',
+    },
+    '77nm1cgu': {
+      'en': '4.9',
+      'es': '',
+      'pt': '',
+    },
+    'yys9wpp0': {
+      'en': '(127 reviews)',
+      'es': '',
+      'pt': '',
+    },
+    '4do0s2ig': {
+      'en': '0.8 miles away',
+      'es': '',
+      'pt': '',
+    },
+    '0nf056lk': {
+      'en': 'Book Now',
+      'es': '',
+      'pt': '',
+    },
+    'zqgh97hu': {
+      'en': 'David Rodriguez',
+      'es': '',
+      'pt': '',
+    },
+    'plei6ynf': {
+      'en': 'Classic Style Barbershop',
+      'es': '',
+      'pt': '',
+    },
+    'v6eok6i9': {
+      'en': '4.8',
+      'es': '',
+      'pt': '',
+    },
+    'b0t2xmkg': {
+      'en': '(89 reviews)',
+      'es': '',
+      'pt': '',
+    },
+    'jds7om8b': {
+      'en': '1.2 miles away',
+      'es': '',
+      'pt': '',
+    },
+    'kj7cp9af': {
+      'en': 'Book Now',
+      'es': '',
+      'pt': '',
+    },
+    'mdvmwlyt': {
+      'en': 'Anthony Williams',
+      'es': '',
+      'pt': '',
+    },
+    'pz3h4mdl': {
+      'en': 'Modern Cuts Studio',
+      'es': '',
+      'pt': '',
+    },
+    'yrm6b2d7': {
+      'en': '4.7',
+      'es': '',
+      'pt': '',
+    },
+    'oc32fzbm': {
+      'en': '(156 reviews)',
+      'es': '',
+      'pt': '',
+    },
+    'aqtr86xq': {
+      'en': '2.1 miles away',
+      'es': '',
+      'pt': '',
+    },
+    'ajv20hqu': {
+      'en': 'Book Now',
+      'es': '',
+      'pt': '',
+    },
+    'jevjr5nl': {
+      'en': 'Good morning',
+      'es': '',
+      'pt': '',
+    },
+    'tk0x27bl': {
+      'en': 'Alex Thompson',
+      'es': '',
+      'pt': '',
     },
   },
   // Templates
@@ -2752,7 +3155,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'OK',
     },
   },
-  // EditService
+  // EditServiceBox
   {
     'twd1glxo': {
       'en': 'Edit Service',
@@ -2900,6 +3303,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Cliente',
       'pt': 'Cliente',
     },
+    'xqw6yypc': {
+      'en': 'Services',
+      'es': 'Cliente',
+      'pt': 'Cliente',
+    },
     'e49unssm': {
       'en': 'Revenue',
       'es': 'Ganancia',
@@ -2967,7 +3375,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // MessageSentClient
   {
     '0rxf9ev2': {
-      'en': 'Mensagem Sent',
+      'en': 'Message Sent',
       'es': 'Mensaje enviado',
       'pt': 'Mensagem enviada',
     },
@@ -3013,6 +3421,217 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': '',
     },
   },
+  // AddServices
+  {
+    'fylxnlpy': {
+      'en': 'Add Your Barbing Services',
+      'es': '',
+      'pt': '',
+    },
+    'ax8j7js9': {
+      'en': 'Set up the services you offer to attract more clients',
+      'es': '',
+      'pt': '',
+    },
+    'iggpz5ec': {
+      'en': 'Service Details',
+      'es': '',
+      'pt': '',
+    },
+    'f1uvgoqv': {
+      'en': 'Select...',
+      'es': '',
+      'pt': '',
+    },
+    'pb801o3p': {
+      'en': 'Search...',
+      'es': '',
+      'pt': '',
+    },
+    '4zqbeasi': {
+      'en': 'Option 1',
+      'es': '',
+      'pt': '',
+    },
+    'smgfv1hq': {
+      'en': 'Option 2',
+      'es': '',
+      'pt': '',
+    },
+    'yoh1pgk8': {
+      'en': 'Option 3',
+      'es': '',
+      'pt': '',
+    },
+    '2dgup86f': {
+      'en': 'Price (\$)',
+      'es': '',
+      'pt': '',
+    },
+    'conqyjj5': {
+      'en': 'Duration (mins)',
+      'es': '',
+      'pt': '',
+    },
+    '684d3onv': {
+      'en': 'Service description...',
+      'es': '',
+      'pt': '',
+    },
+    '0k96uri0': {
+      'en': 'Add Service',
+      'es': '',
+      'pt': '',
+    },
+    'iw44hifd': {
+      'en': 'Pro Tip',
+      'es': '',
+      'pt': '',
+    },
+    '35bbn91w': {
+      'en':
+          'Add detailed descriptions and competitive pricing to attract more clients. Consider offering package deals!',
+      'es': '',
+      'pt': '',
+    },
+  },
+  // ServiceItemDetails
+  {
+    'pv6tcep6': {
+      'en': 'Classic Haircut',
+      'es': '',
+      'pt': '',
+    },
+    '3vm8yunc': {
+      'en': 'Traditional men\'s haircut with scissors and clippers',
+      'es': '',
+      'pt': '',
+    },
+    'tde3cbg4': {
+      'en': '\$25',
+      'es': '',
+      'pt': '',
+    },
+    '8xddzi5m': {
+      'en': '30 mins',
+      'es': '',
+      'pt': '',
+    },
+    'vkuhuivd': {
+      'en': 'Beard Trim',
+      'es': '',
+      'pt': '',
+    },
+    'pipjwxi2': {
+      'en': 'Professional beard shaping and trimming',
+      'es': '',
+      'pt': '',
+    },
+    'kia7tg64': {
+      'en': '\$15',
+      'es': '',
+      'pt': '',
+    },
+    'r3ethexg': {
+      'en': '20 mins',
+      'es': '',
+      'pt': '',
+    },
+    'gyczqyet': {
+      'en': 'Hot Towel Shave',
+      'es': '',
+      'pt': '',
+    },
+    'l2xlys0n': {
+      'en': 'Luxury straight razor shave with hot towel treatment',
+      'es': '',
+      'pt': '',
+    },
+    'w7b1b5yq': {
+      'en': '\$35',
+      'es': '',
+      'pt': '',
+    },
+    'qsssmyh0': {
+      'en': '45 mins',
+      'es': '',
+      'pt': '',
+    },
+  },
+  // EditService
+  {
+    'yb9ba0gg': {
+      'en': 'Edit Your Barbing Service',
+      'es': '',
+      'pt': '',
+    },
+    'ta20dt4v': {
+      'en': 'Set up the services you offer to attract more clients',
+      'es': '',
+      'pt': '',
+    },
+    'x1pcoeoy': {
+      'en': 'Service Details',
+      'es': '',
+      'pt': '',
+    },
+    'nzdhpany': {
+      'en': 'Select...',
+      'es': '',
+      'pt': '',
+    },
+    '8gf7gjfn': {
+      'en': 'Search...',
+      'es': '',
+      'pt': '',
+    },
+    'y81vz8yt': {
+      'en': 'Option 1',
+      'es': '',
+      'pt': '',
+    },
+    'gzfmbkvt': {
+      'en': 'Option 2',
+      'es': '',
+      'pt': '',
+    },
+    'ehkk4k6q': {
+      'en': 'Option 3',
+      'es': '',
+      'pt': '',
+    },
+    '193s5qxz': {
+      'en': 'Price (\$)',
+      'es': '',
+      'pt': '',
+    },
+    'uepkx219': {
+      'en': 'Duration (mins)',
+      'es': '',
+      'pt': '',
+    },
+    'e0uz7zmh': {
+      'en': 'Service description...',
+      'es': '',
+      'pt': '',
+    },
+    'v1g7k3vx': {
+      'en': 'Add Service',
+      'es': '',
+      'pt': '',
+    },
+    '99vfckyy': {
+      'en': 'Pro Tip',
+      'es': '',
+      'pt': '',
+    },
+    '5akptr5m': {
+      'en':
+          'Add detailed descriptions and competitive pricing to attract more clients. Consider offering package deals!',
+      'es': '',
+      'pt': '',
+    },
+  },
   // Miscellaneous
   {
     'vjunut8m': {
@@ -3049,6 +3668,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'es': 'Buscar...',
       'pt': 'Procurar...',
+    },
+    '8s7w8rrx': {
+      'en': '',
+      'es': '',
+      'pt': '',
+    },
+    'diyuutkh': {
+      'en': '',
+      'es': '',
+      'pt': '',
+    },
+    '7oo30v2m': {
+      'en': '',
+      'es': '',
+      'pt': '',
     },
     '1m21tq05': {
       'en': '',

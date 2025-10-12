@@ -175,9 +175,9 @@ class _IntroWidgetState extends State<IntroWidget>
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
-                          'assets/images/Novo_projeto_51.png',
-                          width: 300.0,
-                          height: 174.0,
+                          'assets/images/Black150.png',
+                          width: 150.0,
+                          height: 150.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -453,9 +453,9 @@ class _IntroWidgetState extends State<IntroWidget>
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
-                          'assets/images/Novo_projeto_51.png',
-                          width: 300.0,
-                          height: 174.0,
+                          'assets/images/Black150.png',
+                          width: 150.0,
+                          height: 150.0,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -732,9 +732,9 @@ class _IntroWidgetState extends State<IntroWidget>
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
-                          'assets/images/Novo_projeto_51.png',
-                          width: 300.0,
-                          height: 174.0,
+                          'assets/images/Black150.png',
+                          width: 150.0,
+                          height: 150.0,
                           fit: BoxFit.cover,
                         ),
                       ),
